@@ -11,21 +11,22 @@ names_2 = f.read().split("\n")  # List containing 10000 names
 f.close()
 
 duplicates = []  # Return the list of duplicates in this data structure
-dll_names_1 = BinarySearchTree(None)
-dll_names_2 = BinarySearchTree(None)
+dll_names_1 = BinarySearchTree(names_1[0])
+dll_names_2 = BinarySearchTree(names_2[0])
 
 # Replace the nested for loops below with your improvements
-print(names_1)
 for i in names_1:
     dll_names_1.insert(i)
 for i in names_2:
     dll_names_2.insert(i)
 
-dll_names_1.for_each(print_name)
+
+def check_for_dupes(name):
+    if dll_names_2.contains(name):
+        duplicates.append(name)
 
 
-def print_name(name):
-    print(name)
+dll_names_1.for_each(check_for_dupes)
 
 
 end_time = time.time()
